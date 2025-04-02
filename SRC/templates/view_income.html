@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Income</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Income Records</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Income ID</th>
+                    <th>Source</th>
+                    <th>Date</th>
+                    <th>Received</th>
+                    <th>Total</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for income in incomes %}
+                <tr>
+                    <td>{{ income.IncomeID }}</td>
+                    <td>{{ income.IncomeSources }}</td>
+                    <td>{{ income.DateOfIncome }}</td>
+                    <td>{{ income.IncomeReceived }}</td>
+                    <td>{{ income.TotalIncome }}</td>
+                    <td>{{ income.UserID }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+        <a href="{{ url_for('add_income') }}">Add Income</a>
+    </div>
+</body>
+</html>

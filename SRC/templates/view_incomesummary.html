@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Income Summary</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>UserID</th>
+                    <th>Username</th>
+                    <th>Total Income</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in income_summary %}
+                    <tr>
+                        <td>{{ entry[0] }}</td>
+                        <td>{{ entry[1] }}</td>
+                        <td>${{ "{:0.2f}".format(entry[2]) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

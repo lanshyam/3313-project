@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Add Expense Report</h1>
+    <form method="POST">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="total_savings">Total Savings:</label>
+        <input type="number" id="total_savings" name="total_savings" step="0.01" required>
+
+        <label for="categories">Categories:</label>
+        <input type="text" id="categories" name="categories" required>
+
+        <label for="analysis_id">Analysis ID (Optional):</label>
+        <input type="number" id="analysis_id" name="analysis_id">
+
+        <label for="user_id">User ID:</label>
+        <input type="number" id="user_id" name="user_id" required>
+
+        <button type="submit">Add Report</button>
+    </form>
+</body>
+</html>

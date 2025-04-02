@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Transaction Time</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Transaction Time View</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>TransactionID</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>TotalPrice</th>
+                    <th>ExpenseID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in transaction_results %}
+                    <tr>
+                        <td>{{ entry[0] }}</td>
+                        <td>{{ entry[1] }}</td>
+                        <td>{{ entry[2] }}</td>
+                        <td>${{ "{:0.2f}".format(entry[3]) }}</td>
+                        <td>{{ entry[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

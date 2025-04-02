@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Analysis Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Analysis Reports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Analysis ID</th>
+                <th>Category Analysis</th>
+                <th>Income Analysis</th>
+                <th>Expense Analysis</th>
+                <th>Savings Analysis</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for analysis in analyses %}
+            <tr>
+                <td>{{ analysis['AnalysisID'] }}</td>
+                <td>{{ analysis['CategoryAnalysis'] }}</td>
+                <td>{{ analysis['IncomeAnalysis'] }}</td>
+                <td>{{ analysis['ExpenseAnalysis'] }}</td>
+                <td>{{ analysis['SavingsAnalysis'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Records</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Expense ID</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Paid</th>
+                    <th>Total</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.ExpenseID }}</td>
+                    <td>{{ expense.ExpenseCategory }}</td>
+                    <td>{{ expense.DateOfExpense }}</td>
+                    <td>{{ expense.ExpensePaid }}</td>
+                    <td>{{ expense.TotalExpense }}</td>
+                    <td>{{ expense.UserID }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+        <a href="{{ url_for('add_expense') }}">Add Expense</a>
+    </div>
+</body>
+</html>

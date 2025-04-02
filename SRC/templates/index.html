@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to the Expense Tracker</h1>
+            <p>Track your expenses, income, and savings all in one place!</p>
+        </div>
+    </header>
+    <nav class="navigation">
+        <ul>
+            <li><a href="{{ url_for('add_expense') }}">Add Exp</a></li>
+            <li><a href="{{ url_for('add_income') }}">Add Inc</a></li>
+            <li><a href="{{ url_for('add_user') }}">Add User</a></li>
+            <li><a href="{{ url_for('add_report') }}">Add Rep</a></li>
+            <li><a href="{{ url_for('view_expense') }}">View Exp</a></li>
+            <li><a href="{{ url_for('view_income') }}">View Inc</a></li>
+            <li><a href="{{ url_for('view_report') }}">View Rep</a></li>
+            <li><a href="{{ url_for('view_analysis') }}">View Analysis</a></li>
+            <li><a href="{{ url_for('view_users') }}">View Users</a></li>
+            <li><a href="{{ url_for('view_incomesummary') }}">View inc summary</a></li>
+            <li><a href="{{ url_for('view_range') }}">View Range</a></li>
+            <li><a href="{{ url_for('view_transactiontime') }}">View Time</a></li>
+            <li><a href="{{ url_for('view_user_expenses') }}">View User Exp</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Manage Your Finances</h2>
+            <p>Effortlessly track your financial activity and stay on top of your goals.</p>
+            <p>Use the navigation above to get started!</p>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Expense Tracker. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
