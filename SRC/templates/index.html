@@ -5,42 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function checkLogin(event) {
+            event.preventDefault();
+            let password = document.getElementById("password").value;
+            
+            if (password === "secure123") {
+                document.getElementById("login-form").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+                
+                // Enable all navigation links
+                document.querySelectorAll(".navigation a").forEach(link => {
+                    link.classList.remove("disabled");
+                    link.removeAttribute("onclick");
+                });
+            } else {
+                alert("Incorrect password! Try again.");
+            }
+        }
+    </script>
+    <style>
+        .disabled {
+            pointer-events: none;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Welcome to the Expense Tracker</h1>
-            <p>Track your expenses, income, and savings all in one place!</p>
-        </div>
-    </header>
-    <nav class="navigation">
-        <ul>
-            <li><a href="{{ url_for('add_expense') }}">Add Exp</a></li>
-            <li><a href="{{ url_for('add_income') }}">Add Inc</a></li>
-            <li><a href="{{ url_for('add_user') }}">Add User</a></li>
-            <li><a href="{{ url_for('add_report') }}">Add Rep</a></li>
-            <li><a href="{{ url_for('view_expense') }}">View Exp</a></li>
-            <li><a href="{{ url_for('view_income') }}">View Inc</a></li>
-            <li><a href="{{ url_for('view_report') }}">View Rep</a></li>
-            <li><a href="{{ url_for('view_analysis') }}">View Analysis</a></li>
-            <li><a href="{{ url_for('view_users') }}">View Users</a></li>
-            <li><a href="{{ url_for('view_incomesummary') }}">View inc summary</a></li>
-            <li><a href="{{ url_for('view_range') }}">View Range</a></li>
-            <li><a href="{{ url_for('view_transactiontime') }}">View Time</a></li>
-            <li><a href="{{ url_for('view_user_expenses') }}">View User Exp</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section>
-            <h2>Manage Your Finances</h2>
-            <p>Effortlessly track your financial activity and stay on top of your goals.</p>
-            <p>Use the navigation above to get started!</p>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Expense Tracker. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div id="login-form">
+        <h2>Login</h2>
+        <form onsubmit="checkLogin(event)">
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <header>
+            <div class="container">
+                <h1>Welcome to the Expense Tracker</h1>
+                <p>Track your expenses, income, and savings all in one place!</p>
+            </div>
+        </header>
+        <nav class="navigation">
+            <ul>
+                <li><a href="{{ url_for('add_expense') }}" class="disabled" onclick="return false;">Add Exp</a></li>
+                <li><a href="{{ url_for('add_income') }}" class="disabled" onclick="return false;">Add Inc</a></li>
+                <li><a href="{{ url_for('add_user') }}" class="disabled" onclick="return false;">Add User</a></li>
+                <li><a href="{{ url_for('add_report') }}" class="disabled" onclick="return false;">Add Rep</a></li>
+                <li><a href="{{ url_for('view_expense') }}" class="disabled" onclick="return false;">View Exp</a></li>
+                <li><a href="{{ url_for('view_income') }}" class="disabled" onclick="return false;">View Inc</a></li>
+                <li><a href="{{ url_for('view_report') }}" class="disabled" onclick="return false;">View Rep</a></li>
+                <li><a href="{{ url_for('view_analysis') }}" class="disabled" onclick="return false;">View Analysis</a></li>
+                <li><a href="{{ url_for('view_users') }}" class="disabled" onclick="return false;">View Users</a></li>
+                <li><a href="{{ url_for('view_incomesummary') }}" class="disabled" onclick="return false;">View inc summary</a></li>
+                <li><a href="{{ url_for('view_range') }}" class="disabled" onclick="return false;">View Range</a></li>
+                <li><a href="{{ url_for('view_transactiontime') }}" class="disabled" onclick="return false;">View Time</a></li>
+                <li><a href="{{ url_for('view_user_expenses') }}" class="disabled" onclick="return false;">View User Exp</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section>
+                <h2>Manage Your Finances</h2>
+                <p>Effortlessly track your financial activity and stay on top of your goals.</p>
+                <p>Use the navigation above to get started!</p>
+            </section>
+        </main>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Expense Tracker. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>

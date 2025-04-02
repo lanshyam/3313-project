@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 from mysql.connector import Error
+from flask import Flask, request, jsonify
+import subprocess
 
 app = Flask(__name__)
 
@@ -24,6 +26,22 @@ def get_db_connection():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    password = data.get("password", "")
+
+    # Run C++ program to check password
+    result = subprocess.run(['./Login'], input=password, capture_output=True, text=True)
+    output = result.stdout.strip()
+
+    if output == "success":
+        return jsonify({"status": "success"})
+    else:
+        return jsonify({"status": "fail"})
+
+
 
 @app.route('/add_expense', methods=['GET', 'POST'])
 def add_expense():
